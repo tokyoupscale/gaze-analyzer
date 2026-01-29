@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 from datetime import datetime
 
-class MPIIGazeAnalyzer:
+class Analyzer:
     def __init__(self, dataset_path):
         self.dataset_path = Path(dataset_path)
         self.persons = []
@@ -457,3 +457,14 @@ class MPIIGazeAnalyzer:
             f.write("*отчет сгенерирован автоматически*")
 
         return report_path
+    
+
+    def activate(self):
+        self.scan()
+        self.scan()
+        self.analyze_annotations(500)
+        self.analyze_quality(10000)
+        self.plot_do()
+        self.normalize_and_clean()
+        self.plot_posle()
+        self.report_autogeneration()
